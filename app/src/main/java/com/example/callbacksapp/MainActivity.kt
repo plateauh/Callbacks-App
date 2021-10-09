@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 
@@ -12,10 +13,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navigateButton = findViewById<Button>(R.id.navigate_btn)
-        navigateButton.setOnClickListener {
-            val intent = Intent(this, SecondActivity::class.java)
-            startActivity(intent)
-        }
+//        navigateButton.setOnClickListener {
+//            val intent = Intent(this, SecondActivity::class.java)
+//            startActivity(intent)
+//        }
+        navigateButton.setOnClickListener(object: View.OnClickListener {
+            override fun onClick(v: View?){
+                val intent = Intent(this@MainActivity, SecondActivity::class.java)
+                startActivity(intent)
+            }
+        })
     }
 
     override fun onResume() {
@@ -42,3 +49,4 @@ class MainActivity : AppCompatActivity() {
         Log.d("First Activity", "onDestroy")
     }
 }
+
